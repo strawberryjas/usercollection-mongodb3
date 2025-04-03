@@ -1,0 +1,38 @@
+use mydatabase
+db.createCollection("users")
+db.createCollection("products")
+db.createCollection("orders")
+db.createCollection("payments")
+show collections
+db.users.insertMany([
+  { name: "Alice", email: "alice@example.com", age: 25, role: "admin" },
+  { name: "Bob", email: "bob@example.com", age: 30, role: "user" },
+  { name: "Charlie", email: "charlie@example.com", age: 22, role: "user" },
+  { name: "David", email: "david@example.com", age: 28, role: "moderator" },
+  { name: "Eve", email: "eve@example.com", age: 27, role: "user" }
+])
+db.products.insertMany([
+  { name: "Laptop", price: 1000, stock: 50, category: "Electronics" },
+  { name: "Phone", price: 500, stock: 100, category: "Electronics" },
+  { name: "Table", price: 150, stock: 30, category: "Furniture" },
+  { name: "Chair", price: 75, stock: 40, category: "Furniture" },
+  { name: "Headphones", price: 200, stock: 60, category: "Accessories" }
+])
+db.orders.insertMany([
+  { user_id: 1, product: "Laptop", quantity: 1, status: "shipped" },
+  { user_id: 2, product: "Phone", quantity: 2, status: "pending" },
+  { user_id: 3, product: "Table", quantity: 1, status: "delivered" },
+  { user_id: 4, product: "Chair", quantity: 4, status: "processing" },
+  { user_id: 5, product: "Headphones", quantity: 1, status: "shipped" }
+])
+db.payments.insertMany([
+  { user_id: 1, amount: 1000, method: "credit card", status: "completed" },
+  { user_id: 2, amount: 1000, method: "paypal", status: "pending" },
+  { user_id: 3, amount: 150, method: "debit card", status: "completed" },
+  { user_id: 4, amount: 300, method: "credit card", status: "failed" },
+  { user_id: 5, amount: 200, method: "bank transfer", status: "completed" }
+])
+db.users.find().pretty()
+db.products.find().pretty()
+db.orders.find().pretty()
+db.payments.find().pretty()
